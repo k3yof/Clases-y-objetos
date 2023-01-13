@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 
 
-class DadoAlea
+class Punto2d
 {
     int caras;//El numero hasta qu llegara el dado por ejemplo si las caras son 6 habra hasta el numero 6
     int secuencia[];//Para ir guardando la secuencia del dado
@@ -11,13 +11,13 @@ class DadoAlea
     int cont=0;
 
     //Constructor
-    DadoAlea()//Constructor por defecto
+    Punto2d()//Constructor por defecto
     {
         caras = 6;
         secuencia = new int [cont];
         resp = new int [cont];
     }
-    DadoAlea(int caras)//Constructor por defecto
+    Punto2d(int caras)//Constructor por defecto
     {
         if (caras < 2)
         {
@@ -131,7 +131,7 @@ class DadoAlea1
 
 }
 
-public class dado
+public class camion
 {
 
     public static void main(String[] args) 
