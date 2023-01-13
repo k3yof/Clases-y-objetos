@@ -51,9 +51,16 @@ class Punto2d
         return resul;
     }  
 
-    void setPosicion(int fila,int cols)
+    double [] setPosicion(int fila,int cols)
     {
-       
+       double posiciones [];
+       posiciones = new double [2];
+
+       posiciones[0]=this.x;
+       posiciones[1]=this.y;
+
+       return posiciones;
+
 
     }
 
