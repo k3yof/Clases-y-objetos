@@ -31,6 +31,14 @@ class Punto2d
     }
     
 
+    void  setPosicionX(double x)
+    {
+        this.x=x;
+    }
+    void  setPosicionY(double y)
+    {
+        this.y=y;
+    }
 
     
     int[] insertar(int resul[], int elem)
@@ -63,7 +71,7 @@ public class camion
        //s1 = new Semaforo1();
 
        //Constructoor por defecto
-       camion1 = new Punto2d();
+       camion1 = new Punto2d(4,4);
 
 
        System.out.println(camion1.getPosicionX());
