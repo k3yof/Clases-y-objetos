@@ -12,7 +12,7 @@ class Punto2d
     Punto2d()//Constructor por defecto
     {
       x=0;
-      y=0;
+      y=1;
     }
     //Comportamiento
 
@@ -26,7 +26,7 @@ class Punto2d
     }
     double  getUbicacion()
     {
-        double c = x+y;
+        double c = getPosicionX()+getPosicionY();
 
         return c;
     }
@@ -65,7 +65,10 @@ public class camion
        //Constructoor por defecto
        camion1 = new Punto2d();
 
-       camion1.getUbicacion();
+
+       System.out.println(camion1.getPosicionX());
+       System.out.println(camion1.getPosicionY());
+       System.out.println(camion1.getUbicacion());
 
 
 
