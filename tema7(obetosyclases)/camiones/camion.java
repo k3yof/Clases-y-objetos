@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 class Punto2d
 {
-   double x;
-   double y;
-
+   private double x;
+   private double y;
+   private double posiciones1 [];
     //Constructor
     Punto2d()//Constructor por defecto
     {
@@ -21,11 +21,11 @@ class Punto2d
     }
     //Comportamiento
 
-    double  getPosicionX()
+    public double  getPosicionX()
     {
         return x;
     }
-    double  getPosicionY()
+    public double  getPosicionY()
     {
         return y;
     }
@@ -39,6 +39,14 @@ class Punto2d
     {
         this.y=y;
     }
+    void  setPosicion1()
+    {
+       
+       posiciones1 = new double [2];
+
+       posiciones1[0]=this.x;
+       posiciones1[1]=this.y;
+    }
 
     
     int[] insertar(int resul[], int elem)
@@ -50,6 +58,36 @@ class Punto2d
 
         return resul;
     }  
+
+    public boolean comparar(Punto2d otro)
+    {
+        boolean iguales=false;
+        if ( this.x == otro.getPosicionX() && this.y == otro.getPosicionY())
+        {
+            iguales=true;
+        }
+
+        return iguales;
+    }
+
+    //Metodo importante
+    public boolean equals(Object otro)
+    {
+        Punto2d alguien = (Punto2d) otro;
+        boolean iguales=false;
+        if ( this.x==alguien.x  && this.y == alguien.y)
+        {
+            iguales=true;
+        }
+
+        return iguales;
+    }
+
+
+
+
+
+
 
     double [] setPosicion(int fila,int cols)
     {
