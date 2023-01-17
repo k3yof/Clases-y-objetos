@@ -73,6 +73,12 @@ class Punto2d
     //Metodo importante
     public boolean equals(Object otro)
     {
+        return (this.comparar((Punto2d)otro));
+
+
+
+        //Puedes usar el metodo anterior o el siguiente
+        /* 
         Punto2d alguien = (Punto2d) otro;
         boolean iguales=false;
         if ( this.x==alguien.x  && this.y == alguien.y)
@@ -80,7 +86,8 @@ class Punto2d
             iguales=true;
         }
 
-        return iguales;
+        return iguales; 
+        */
     }
 
 
