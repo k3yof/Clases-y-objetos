@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+import javax.sound.sampled.Line;
+
 
 
 class Punto2d
@@ -110,6 +112,54 @@ class Punto2d
     }
 
 }
+class Linea
+{
+
+    private int numerosPuntos=2;
+    private double [] inicioLinea;
+    private double [] finLinea;
+    private double [] linea;
+
+    //Constructor
+    Linea()//Constructor por defecto
+    {
+      linea = new double [2*2];
+      inicioLinea = inicioLinea;
+    }
+    Linea(Punto2d inicio, Punto2d fin)//Constructor por defecto
+    {
+
+      linea = new double [numerosPuntos*2];
+    
+      inicio = new double [2];
+      inicio [0]= linea[0];
+      inicio [1]= linea[1];
+      fin [linea.length-1]= linea[linea.length-1];
+      fin [linea.length]= linea[linea.length];
+      //this.y=y;
+    }
+
+
+    double [] getInicioLinea()
+    {
+        return inicioLinea;
+    }
+    double [] getFinLinea()
+    {
+        return finLinea;
+    }
+
+    double [] getLinea()
+    {
+        return linea;
+    }
+    void nuevoPunto(int fila,int cols)
+    {
+        //linea=Punto2d.setPosicion(fila,cols);
+
+    }
+
+}
 
 public class camion
 {
@@ -126,8 +176,14 @@ public class camion
        camion1 = new Punto2d(4,4);
 
 
-       System.out.println(camion1.getPosicionX());
-       System.out.println(camion1.getPosicionY());
+       Punto2d puntoInicio;
+       Punto2d puntoFin;
+       puntoInicio = new Punto2d(0,0);
+       puntoFin = new Punto2d(4,4);
+       Linea a;
+       a = new Linea(puntoInicio,puntoFin);
+       
+       a.getLinea();
        
 
 
