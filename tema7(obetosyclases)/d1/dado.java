@@ -32,7 +32,7 @@ class DadoAlea
             resp = new int [cont];
         }
         
-    }<z
+    }
     //Comportamiento
 
     int getCont()
