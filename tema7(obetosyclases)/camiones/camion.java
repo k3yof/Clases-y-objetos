@@ -31,6 +31,16 @@ class Punto2d
     {
         return y;
     }
+    public double []  getPosicion(int fil,int col)
+    {
+       double posiciones [];
+       posiciones = new double [2];
+
+       posiciones[0]=fil;
+       posiciones[1]=col;
+
+       return posiciones;
+    }
     
 
     void  setPosicionX(double x)
@@ -48,6 +58,8 @@ class Punto2d
 
        posiciones1[0]=this.x;
        posiciones1[1]=this.y;
+
+       
     }
 
     
@@ -114,50 +126,86 @@ class Punto2d
 }
 class Linea
 {
-
-    private int numerosPuntos=2;
-    private double [] inicioLinea;
-    private double [] finLinea;
-    private double [] linea;
+    private Punto2d [] linea;
 
     //Constructor
-    Linea()//Constructor por defecto
-    {
-      linea = new double [2*2];
-      inicioLinea = inicioLinea;
-    }
-    Linea(Punto2d inicio, Punto2d fin)//Constructor por defecto
-    {
-
-      linea = new double [numerosPuntos*2];
-    
-      inicio = new double [2];
-      inicio [0]= linea[0];
-      inicio [1]= linea[1];
-      fin [linea.length-1]= linea[linea.length-1];
-      fin [linea.length]= linea[linea.length];
-      //this.y=y;
+    Linea(Punto2d punto1, Punto2d punto2)//Constructor por defecto
+    {  
+      linea = new Punto2d [2];
+  
+      linea[0] = punto1;
+      linea[1] = punto2;  
     }
 
-
-    double [] getInicioLinea()
-    {
-        return inicioLinea;
-    }
-    double [] getFinLinea()
-    {
-        return finLinea;
-    }
-
-    double [] getLinea()
+    //Mostrar la linea
+    Punto2d [] getLinea()
     {
         return linea;
     }
-    void nuevoPunto(int fila,int cols)
+    //Insertar Punto
+    public Punto2d[] insertar( Punto2d elem)
+    //inserta un nuevo elemento en el array pasado como argumento
+    //SIN respetar orden
     {
-        //linea=Punto2d.setPosicion(fila,cols);
+        linea = Arrays.copyOf(linea, linea.length+1);
+        linea[linea.length-1] = elem;
+
+        return linea;
+    }  
+    //Borrar Punto
+    /* public Punto2d[] eliminar (Punto2d elem)
+    {
+        Punto2d copia[]=Arrays.copyOf(linea, elem);//copia es un clon de t
+        int i=0;
+        while(i<copia.length)//recorremos copia
+        {
+            if (copia[i]> elem)
+            {
+                //hay que eliminar copia [i];
+                copia[i]=copia[copia.length-1];//copiamos el ultimo en copia[i]
+                //y decrementamos la longitud de  copia 1. Elimina el ultimo.
+                copia=Arrays.copyOf(copia, copia.length-1);
+                //Ahora tendremos que volver a comprobar copia[i]. No modificamos i
+
+            }else
+            {
+                i++;//copia[i] se queda en la tabla, comprobamos copia[i+1]
+            }
+           
+        }
+        return copia;
+    }  */
+    //Mostrar linea
+    private void mostrarLinea()
+    {
 
     }
+    //Desplazar
+    //Ver el tamaño
+    private int getTamaño()
+    {
+        int tamañoLinea;
+        tamañoLinea = linea.length;
+        return tamañoLinea;
+    }
+    //equals a lineas
+     private void compararTamaño(Linea linea2)
+    {
+        //Ver el tamaño de la linea1
+        int tamañolinea1 = getTamaño();
+        int tamañoLinea2;
+        tamañoLinea2 = linea2.getTamaño();
+
+        if (tamañolinea1==tamañoLinea2)
+        {
+            System.out.println("Las dos lineas son iguales");
+        }
+        else
+        {
+            System.out.println("Las dos lineas no son iguales");
+        }
+        
+    } 
 
 }
 
@@ -178,12 +226,14 @@ public class camion
 
        Punto2d puntoInicio;
        Punto2d puntoFin;
-       puntoInicio = new Punto2d(0,0);
-       puntoFin = new Punto2d(4,4);
+       puntoInicio = new Punto2d(5,7);
+       puntoFin = new Punto2d(8,9);
+
+
        Linea a;
        a = new Linea(puntoInicio,puntoFin);
        
-       a.getLinea();
+       System.out.print(Arrays.toString(a.getLinea()));
        
 
 
