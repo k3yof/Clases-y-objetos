@@ -9,6 +9,7 @@ class DadoAlea
     int secuencia[];//Para ir guardando la secuencia del dado
     int resp[];
     int cont=0;
+    
 
     //Constructor
     DadoAlea()//Constructor por defecto

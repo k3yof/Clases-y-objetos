@@ -41,6 +41,15 @@ class Punto2d
 
        return posiciones;
     }
+    public void  mostrarPosicion()
+    {
+
+       System.out.print("x:"+x+"  ");
+       System.out.print("y:"+y);
+
+       
+    }
+    
     
 
     void  setPosicionX(double x)
@@ -153,13 +162,14 @@ class Linea
         return linea;
     }  
     //Borrar Punto
-    /* public Punto2d[] eliminar (Punto2d elem)
+    public Punto2d[] eliminar (Punto2d elem)
     {
-        Punto2d copia[]=Arrays.copyOf(linea, elem);//copia es un clon de t
+        int num = linea.length;
+        Punto2d copia[]=Arrays.copyOf(linea,num);//copia es un clon de t
         int i=0;
         while(i<copia.length)//recorremos copia
         {
-            if (copia[i]> elem)
+            if (copia[i].equals(elem))
             {
                 //hay que eliminar copia [i];
                 copia[i]=copia[copia.length-1];//copiamos el ultimo en copia[i]
@@ -174,11 +184,15 @@ class Linea
            
         }
         return copia;
-    }  */
+    } 
     //Mostrar linea
-    private void mostrarLinea()
+    public void mostrarLinea()
     {
-
+        for (int i=0;i<linea.length;i++)
+        {
+            linea[i].mostrarPosicion();
+            System.out.println();
+        }
     }
     //Desplazar
     //Ver el tamaño
@@ -189,7 +203,7 @@ class Linea
         return tamañoLinea;
     }
     //equals a lineas
-     private void compararTamaño(Linea linea2)
+     public void compararTamaño(Linea linea2)
     {
         //Ver el tamaño de la linea1
         int tamañolinea1 = getTamaño();
@@ -226,14 +240,19 @@ public class camion
 
        Punto2d puntoInicio;
        Punto2d puntoFin;
+
+       Punto2d puntoMedio;
        puntoInicio = new Punto2d(5,7);
+       puntoMedio = new Punto2d(17,2);
        puntoFin = new Punto2d(8,9);
 
 
        Linea a;
        a = new Linea(puntoInicio,puntoFin);
        
-       System.out.print(Arrays.toString(a.getLinea()));
+    
+       a.insertar(puntoMedio);
+       a.mostrarLinea();
        
 
 
