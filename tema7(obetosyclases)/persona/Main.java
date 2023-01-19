@@ -69,6 +69,29 @@ class Linea
         }
     }
 
+   /*  public Punto2d[] eliminar (Punto2d elem)
+    {
+        int num = linea.length;
+        Punto2d copia[]=Arrays.copyOf(linea,num);//copia es un clon de t
+        int i=0;
+        while(i<copia.length)//recorremos copia
+        {
+            if (copia[i].equals(elem))
+            {
+                //hay que eliminar copia [i];
+                copia[i]=copia[copia.length-1];//copiamos el ultimo en copia[i]
+                //y decrementamos la longitud de  copia 1. Elimina el ultimo.
+                copia=Arrays.copyOf(copia, copia.length-1);
+                //Ahora tendremos que volver a comprobar copia[i]. No modificamos i
+
+            }else
+            {
+                i++;//copia[i] se queda en la tabla, comprobamos copia[i+1]
+            }
+           
+        }
+        return copia;
+    }  */
     public void mostrar()
     {
         for(int i=0; i<this.size(); i++)
