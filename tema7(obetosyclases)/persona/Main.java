@@ -174,90 +174,7 @@ public class Main
     public static void main(String args[])
     {
         
-      Semaforo s1;
-
-      s1 = new Semaforo();
-      s1 = new Semaforo((byte)0, true, false, (byte)0, (byte)200, (byte)6);
-
-      if(s1.encendido() == true)
-      {
-        System.out.println("El semáforo está ON");
-      }
-      else
-      {
-        System.out.println("El semáforo está OFF");
-      }
-
-      s1.encender();
-
-      if(s1.encendido() == true)
-      {
-        System.out.println("El semáforo está ON");
-      }
-      else
-      {
-        System.out.println("El semáforo está OFF");
-      }
-
-      s1.setBlink(true);
-
-
-      Dado dado6caras, dado12caras;
-
-      dado6caras = new Dado();
-      dado12caras = new Dado((byte) 12);
-
-      //dado6caras.nCaras = -5; //ERROR: nCaras es private
-
-      for(int i=0; i<7; i++)
-        System.out.println(dado6caras.lanzar());
-        
-      System.out.println(dado12caras.lanzar());
-
-      System.out.println(Arrays.toString(dado6caras.getLista()));
-        
-        
-      //crear un vector/array/tabla de dados
-      //con un bucle hacer lanzamientos de cada uno de ellos
-
-      Dado[] vectorDados;
-
-      vectorDados = new Dado[5]; //reservamos memoria para referencias
-      //dos de 6
-      //1 de 12
-      //2 de 400
-      for(int i=0; i<2; i++)
-      {
-        vectorDados[i] = new Dado();
-      }
-
-      vectorDados[2] = new Dado((byte) 12);
-
-      for(int i=3; i<5; i++)
-      {
-        vectorDados[i] = new Dado((byte) 125);
-      }
-
-      System.out.println("Array:");
-      for(int i=0; i<5; i++)
-      {
-        System.out.println(vectorDados[i].getCaras());
-      }
-
-      //System.out.println(vectorDados[1].lanzar());
-
-      Dado pruebaTest;
-
-      pruebaTest = new Dado((byte) 12);
-
-      System.out.println(Arrays.toString(pruebaTest.getLista()));
-        
-      test(pruebaTest);
-        
-      System.out.println(Arrays.toString(pruebaTest.getLista()));
-        
-
-
+      
       Punto2d p1, p2;
 
       p1 = new Punto2d(4, 5);
@@ -279,12 +196,6 @@ public class Main
       l.mostrar();
 
       
-    }
-
-    public static void test(Dado arg)
-    //recibe un dado, lanza una vez
-    {
-        arg.lanzar();
     }
    
 }
