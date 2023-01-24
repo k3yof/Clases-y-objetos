@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 class Carta
 {
@@ -260,6 +261,185 @@ class BlackJack
 {
     public static void main(String [] args)
     {
-    
+    Scanner sc = new Scanner(System.in);
+    Baraja banca;
+
+    banca = new Baraja();
+
+    Carta jugador1;
+
+    int seguir=0;
+    int as =0;
+    int suma=0;
+
+
+    if (banca.restantes() > 0)
+    {
+        System.out.println("Bienvenido jugador");
+        jugador1 = banca.robar();
+        if
+        (jugador1.valor() >=10 )
+        {
+            suma = suma+10;
+        }
+        else
+        {
+            if (jugador1.valor() == 1)
+            {
+                System.out.println("Tienes un As");
+                System.out.println("Tienes estos puntos "+suma);
+                System.out.println("Si quieres que al As valga 1 dale al (1),si quieres que valga 11 dale al (2)");
+                as = sc.nextInt();
+                if (as==1)
+                {
+                    suma=suma +1;
+                }
+                else
+                {
+                    suma = suma+11;
+                }
+            }
+            suma = suma + jugador1.valor();
+        }
+        jugador1.mostrar();
+        System.out.println("Tus cartas tienen un valor de "+suma+" puntos");
+
+        jugador1 = banca.robar();
+        jugador1.mostrar();
+        if
+        (jugador1.valor() >=10 )
+        {
+            suma = suma+10;
+        }
+        else
+        {
+            if (jugador1.valor() == 1)
+            {
+                System.out.println("Tienes un As");
+                System.out.println("Tienes estos puntos "+suma);
+                System.out.println("Si quieres que al As valga 1 dale al (1),si quieres que valga 11 dale al (2)");
+                as = sc.nextInt();
+                if (as==1)
+                {
+                    suma=suma +1;
+                }
+                else
+                {
+                    suma = suma+11;
+                }
+            }
+            suma = suma + jugador1.valor();
+        }
+        System.out.println("Tus cartas tienen un valor de "+suma+" puntos");
+
+        System.out.println();
+        System.out.println("Quieres robar otra");
+        System.out.println("1)SI 2)NO");
+        seguir = sc.nextInt();
+
+        if (seguir==1)
+        {
+            jugador1 = banca.robar();
+            if
+            (jugador1.valor() >=10 )
+            {
+                suma = suma+10;
+            }
+            else
+            {
+                if (jugador1.valor() == 1)
+                {
+                    System.out.println("Tienes un As");
+                    System.out.println("Tienes estos puntos "+suma);
+                    System.out.println("Si quieres que al As valga 1 dale al (1),si quieres que valga 11 dale al (2)");
+                    as = sc.nextInt();
+                    if (as==1)
+                    {
+                        suma=suma +1;
+                    }
+                    else
+                    {
+                        suma = suma+11;
+                    }
+                }
+                suma = suma + jugador1.valor();
+                if (suma>21)
+                {
+                    System.out.println("PERDEDOR");
+                }
+                else if (suma <21 )
+                {
+                    System.out.println("Tus cartas tienen un valor de "+suma);
+
+                    System.out.println("Quieres robar otra");
+                    System.out.println("1)SI 2)NO");
+                    seguir = sc.nextInt();
+                    if (seguir==1)
+                    {
+                        jugador1 = banca.robar();
+                        if
+                        (jugador1.valor() >=10 )
+                        {
+                            suma = suma+10;
+                        }
+                        else
+                        {
+                            if (jugador1.valor() == 1)
+                            {
+                                System.out.println("Tienes un As");
+                                System.out.println("Tienes estos puntos "+suma);
+                                System.out.println("Si quieres que al As valga 1 dale al (1),si quieres que valga 11 dale al (2)");
+                                as = sc.nextInt();
+                                if (as==1)
+                                {
+                                    suma=suma +1;
+                                }
+                                else
+                                {
+                                    suma = suma+11;
+                                }
+                            }
+                            suma = suma + jugador1.valor();
+                            if (suma>21)
+                            {
+                                System.out.println("PERDEDOR");
+                            }
+                            else if (suma <21 )
+                            {
+                                System.out.println("Quieres robar otra");
+                                System.out.println("1)SI 2)NO");
+                                seguir = sc.nextInt();
+                        }
+                            else if (suma ==21)
+                            {
+                                System.out.println("Tienes un BLACKJACK");
+                            }
+                        }
+                    jugador1.mostrar();
+                    System.out.println("Tus cartas tienen un valor de "+suma+" puntos");
+
+
+                    }
+                
+            
+                }
+                }
+                jugador1.mostrar();
+                System.out.println("Tus cartas tienen un valor de "+suma+" puntos");
+
+
+            }
+            else
+            {
+
+            }
+            
+            
+
+    }
+    else
+    {
+        System.out.println("No quedan cartas para seguir jugando");
+    }
     }
 }
