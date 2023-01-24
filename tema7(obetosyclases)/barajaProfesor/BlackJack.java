@@ -281,6 +281,7 @@ class BlackJack
             while(obligatorias!=0)
             {
 
+                //Hacemos que el juego empieze en dos cartas
             
                 jugador1 = banca.robar();
 
@@ -290,16 +291,19 @@ class BlackJack
                 if
                 (jugador1.valor() >=10 )
                 {
+                    //A partir de que sea mayor de 10 cuenta como un 10,da igual que la carta sea 14,13,12,11 o 10 todas valen 10
                     suma = suma+10;
                 }
                 else
                 {
+                    //Por si tenemos un AS
                     if (jugador1.valor() == 1)
                     {
                         System.out.println("Tienes un As");
                         System.out.println("Tienes estos puntos "+suma);
                         System.out.println("Si quieres que al As valga 1 dale al (1),si quieres que valga 11 dale al (2)");
                         as = sc.nextInt();
+                        //Le doy a elegir si quiere que valga 1 o valga 11
                         if (as==1)
                         {
                             suma=suma +1;
@@ -311,6 +315,7 @@ class BlackJack
                     }
                     else
                     {
+                    //Si no es 1 y no es mayor de 10,sabemos que esta entre el 2-9 y entonces lo sumamos
                     suma = suma + jugador1.valor();
                     }
                 }
@@ -319,34 +324,45 @@ class BlackJack
                 if (obligatorias==0)
                 {
                     System.out.println("Tus cartas tienen un valor de "+suma);
-                System.out.println("Quieres robar otra");
-                System.out.println("1)SI 2)NO");
-                seguir = sc.nextInt();
-                if (seguir == 1)
-                {
-                    obligatorias++;
-                    if (suma>21)
+                    System.out.println("Quieres robar otra");
+                    System.out.println("1)SI 2)NO");
+                    seguir = sc.nextInt();
+                    //Preguntamos si quiere seguir jugando,si quiere jugar añadimos una a obligatorias para que nos de otra carta mas
+                    if (seguir == 1)
                     {
-                        System.out.println("Tus cartas tienen un valor de "+suma);
-                        System.out.println("PERDEDOR");
+                        obligatorias++;
+                        if (suma>21)
+                        {
+                            //Si se pasa de 21 el jugador ha perdido y por lo tanto se lo decimos
+                            System.out.println("Tus cartas tienen un valor de "+suma);
+                            System.out.println("PERDEDOR");
+                            break;
+                        }
+                        else if (suma <21 )
+                        {
+                            //Si es menor de 21 el jugador puede robar mas cartas
+                            System.out.println("Tus cartas tienen un valor de "+suma);
+                        }
+                        else if (suma==21)
+                        {
+                            //Si tiene 21 le decimos que tiene blackjack (ha ganado directamente)
+                            System.out.println("Tus cartas tienen un valor de "+suma);
+                            System.out.println("BLACKJACK");
+                            break;
+                        }
+                        
+                    }
+                    else if (seguir==2)
+                    {
                         break;
                     }
-                    else if (suma <21 )
-                    {
-                        System.out.println("Tus cartas tienen un valor de "+suma);
-                    }
-                    else if (suma==21)
-                    {
-                        System.out.println("Tus cartas tienen un valor de "+suma);
-                        System.out.println("BLACKJACK");
-                        break;
-                    }
-                    
-                }
                 }
                 
             }
-                    
+        if (seguir ==2 )
+        {
+            break;
+        }            
                 
         }while (seguir !=1);
     }
