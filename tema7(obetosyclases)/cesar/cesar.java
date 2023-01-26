@@ -3,98 +3,21 @@ import java.util.Scanner;
 
 class calendar
 {
-    private int [] fecha;
+    private char [] abecedarioMayusculas= {'A','B','C','D','E','F','G','H','I',' ','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
-    calendar(int año,int mes ,int dia)
-    //creamos un calendario
-    {
-        fecha = new int [3];
-        if (fecha[2]<=31 && fecha [2]>=1)
-        {
-            fecha[2] = dia;
-        }
-        else
-        {
-            fecha[2] = 1;
-        }
-        if (fecha[1]<=12 && fecha [1]>=1)
-        {
-            fecha[1] = mes;
-        }
-        else
-        {
-            fecha[1] = 1;
-        }
-        if (fecha[0]>=0)
-        {
-            fecha[0] = año;
-        }
-        else
-        {
-            fecha[0] = 1;
-        }
-       
-    }
-    public int getDia()
-    {
-        return fecha[2];
-    }
-    public int getMes()
-    {
-        return fecha[1];
-    }
-    public int getAño()
-    {
-        return fecha[0];
-    }
-    void incrementarDia()
-    {
-        if (fecha[2]<32)
-        {
-            fecha[2] = fecha[2]+1;
-        }
-        else
-        {
-            fecha[2] = 1;
-            incrementarMes();
-        }
-       
-    }
-    void incrementarMes()
-    {
-        if (fecha[1]<13)
-        {
-            fecha[1] = fecha[1]+1;
-        }
-        else
-        {
-            fecha[1]=1;
-            incrementarAño();
-        }
-       
-    }
-    void incrementarAño()
-    {
-        fecha[0] = fecha[0]+1;
-    }
+    private char [] abecedarioMinusculas= {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
-    void incrementarAño(int cantidad)
+    calendar()
+    {}
+    
+    int convertidor()
     {
-        fecha[0] = fecha[0]+1;
-    }
-    public void mostrar()
-    {
-        System.out.println(Arrays.toString(fecha));
-    }
-    boolean iguales(calendar otrafecha)
-    {
-        boolean igual=false;
 
-        if (fecha[0] == otrafecha.getAño() && fecha[1] == otrafecha.getMes() && fecha[2] == otrafecha.getDia())
-        {
-            igual= true;
-        }
-        return igual;
+    }
+    int [] cifradorCesar(String nombreReal)
+    {
+        
+        
     }
 
 }
