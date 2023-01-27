@@ -15,10 +15,32 @@ class Conjuntos
         return conjunto.length;
     }
 
+   
+
+
+    //Metodo para saber si un elemento ya esta en el conjunto ya que no puede haber repetidos
+    private boolean esta()
+    {
+        boolean encontrado = false;
+
+
+        return encontrado;
+    }
     //Insertamos el 
     public boolean insertar(Integer nuevo)
     {
+        boolean insertado= false;
+        if (nuevo = =)
+        {
+            conjunto = Arrays.copyOf(conjunto, conjunto.length + 1);
+            System.arraycopy(conjunto, 0, conjunto, 1, conjunto.length - 1);
+            conjunto[0] = nuevo;
+            insertado = true;
 
+        }
+
+        return insertado;
+         
     }
     //Insertar los elementos del otroconjunto
     public boolean insertar(Conjuntos otroconjunto)
@@ -42,7 +64,7 @@ class Conjuntos
     }
     public void muestra()
     {
-
+        System.out.println("Conjunto: " + Arrays.toString(conjunto));
     }
 
 }
