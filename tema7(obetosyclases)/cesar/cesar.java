@@ -7,17 +7,27 @@ class calendar
 
     private char [] abecedarioMinusculas= {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
-    calendar()
-    {}
+   
     
-    int convertidor()
+    private int convertidor()
     {
 
     }
-    int [] cifradorCesar(String nombreReal)
+    public String cifradorCesar(int cantidadDerecha,String nombreReal)
     {
+        String mensajeCifrado="";
+        int cont =0;
+        int longitud;
+        longitud = nombreReal.length;
+
+        if (cont <= longitud)
+        {
+            nombreReal[cont];    
+        }
+       nombreReal[0]= abecedarioMayusculas[cantidadDerecha];
         
-        
+
+        return mensajeCifrado;
     }
 
 }
