@@ -1,104 +1,96 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-class Tanque
+class Carrera
 {
-    private static double litrosTanque=5000;
-   
-    Tanque()
-    {
-        
-    }
-    public double getContenido()
-    {
-        return litrosTanque;
-    }
-    public double setAgregar(double litrosAgregar)
-    {
-        double copia;
-        copia = litrosTanque;
-        if (litrosTanque<5000 && litrosTanque>=0)
-        {
-            //Falta comprobar si cuando metemos una cantidad,esta no se pasa de 5000
-            litrosTanque = litrosTanque+litrosAgregar;
+    private Atleta atleta;
+    private int distancia;
+    private Atleta [] participantes;
 
-            if(litrosTanque>5000)
-            {
-                litrosTanque =copia;
-                
-            }
-        }
-
-        return litrosTanque;
-    }
-    public double setSacarAgua(double litrosSacar)
+    Carrera()
     {
-       
-        double copia;
-        copia = litrosTanque;
-        if (litrosTanque<5000 && litrosTanque>=0)
-        {
 
-            //Falta comprobar si cuando metemos una cantidad,esta no se pasa de 5000
-            litrosTanque = litrosTanque-litrosSacar;
-           
-            if(litrosTanque<=1)
-            {
-                litrosTanque =copia;
-                
-            } 
-        }
-        return litrosTanque;
     }
-    public double setSacarMitad()
+    Carrera(Atleta [] participantes,Atleta ganador)
     {
-        double copia;
-        copia = litrosTanque;
-        if (litrosTanque<5000 && litrosTanque>=0)
-        {
-
-            //Falta comprobar si cuando metemos una cantidad,esta no se pasa de 5000
-            litrosTanque = litrosTanque/2;
-        }
-        
-        return litrosTanque;
+        participantes = new Atleta [] (participantes);
     }
 
+    public String getGanadorNombre(Atleta ganador)
+    {
+        String nombreGanador;
+        nombreGanador=ganador.getNom();
+
+        return nombreGanador;
+    }
+    public String informacionAtleta(Atleta a)
+    {
+        String inf;
+
+        inf = a.getNom()+"  "+a.getNum()+"  "+a.getNac()+"   "+a.getTie();
+
+        return inf;
+
+    }
+    
 }
 
-class agua
+class Atleta
+{
+    private String nombre;
+    private int numero;
+    private String nacionalidad;
+    private double tiempo;
+
+    Atleta(String nom,int num,String nac,double tie)
+    {
+        this.nombre = nom;
+        this.numero = num;
+        this.nacionalidad = nac;
+        this.tiempo = tie;
+    }
+    
+    public String getNom()
+    {
+        return nombre;
+    }
+    public int getNum()
+    {
+        return numero;
+    }
+    public String getNac()
+    {
+        return nacionalidad;
+    }
+    public double getTie()
+    {
+        return tiempo;
+    }
+}
+class Bici
 {
     public static void main(String [] args)
     {
     Scanner sc = new Scanner(System.in);
 
-    Tanque a1;
+    Atleta a;
+    Atleta b;
 
-    a1 = new Tanque();
-    
-    System.out.println(a1.getContenido());
+    a = new Atleta("Paquillo", 0, "Español", 10);
+    b = new Atleta("Pepito", 1, "Español", 100);
 
-    /* a1.setSacarAgua(2500);
-
-    System.out.println(a1.getContenido());
-
-    a1.setSacarMitad();
-
-    System.out.println(a1.getContenido());
-    
-    a1.setAgregar(100);
-
-    System.out.println(a1.getContenido()); */
-
-    while (a1.getContenido()>1)
+    if (a.getTie()<b.getTie())
     {
-        a1.setSacarMitad();
-
-        System.out.println(a1.getContenido());
+        System.out.println(a.getNom()+" con un tiempo de "+a.getTie());
     }
-
-
+    else
+    {
+        System.out.println(b.getNom()+" con un tiempo de "+b.getTie());
+    }
     
+    Carrera c;
+    c = new Carrera();
+    System.out.println(c.informacionAtleta(a));
 
-}
+    }
 }
