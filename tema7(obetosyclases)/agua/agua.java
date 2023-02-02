@@ -1,33 +1,73 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-class calendar
+class Tanque
 {
-    private char [] abecedarioMayusculas= {'A','B','C','D','E','F','G','H','I',' ','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-
-    private char [] abecedarioMinusculas= {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-
+    private double litrosTanque;
    
-    
-    private int convertidor()
+    Tanque()
     {
-
+        litrosTanque=5000;
     }
-    public String cifradorCesar(int cantidadDerecha,String nombreReal)
+    public double getContenido()
     {
-        String mensajeCifrado="";
-        int cont =0;
-        int longitud;
-        longitud = nombreReal.length;
-
-        if (cont <= longitud)
+        return litrosTanque;
+    }
+    public double setAgregar(double litrosAgregar)
+    {
+        double copia;
+        copia = litrosTanque;
+        if (litrosTanque<5000 && litrosTanque>=0)
         {
-            nombreReal[cont];    
-        }
-       nombreReal[0]= abecedarioMayusculas[cantidadDerecha];
-        
+            //Falta comprobar si cuando metemos una cantidad,esta no se pasa de 5000
+            litrosTanque = litrosTanque+litrosAgregar;
 
-        return mensajeCifrado;
+            if(litrosTanque>5000)
+            {
+                litrosTanque =copia;
+                
+            }
+        }
+
+        return litrosTanque;
+    }
+    public double setSacarAgua(double litrosSacar)
+    {
+       
+        double copia;
+        copia = litrosTanque;
+        if (litrosTanque<5000 && litrosTanque>=0)
+        {
+
+            //Falta comprobar si cuando metemos una cantidad,esta no se pasa de 5000
+            litrosTanque = litrosTanque-litrosSacar;
+           
+            if(litrosTanque<=1)
+            {
+                litrosTanque =copia;
+                
+            }
+        }
+        return litrosTanque;
+    }
+    public double setSacarMitad()
+    {
+        double copia;
+        copia = litrosTanque;
+        if (litrosTanque<5000 && litrosTanque>=0)
+        {
+
+            //Falta comprobar si cuando metemos una cantidad,esta no se pasa de 5000
+            litrosTanque = litrosTanque%2;
+           
+            if(litrosTanque<=1)
+            {
+                litrosTanque =copia;
+                
+            }
+        }
+        
+        return litrosTanque;
     }
 
 }
@@ -37,5 +77,27 @@ class agua
     public static void main(String [] args)
     {
     Scanner sc = new Scanner(System.in);
-    } 
+
+    Tanque a1;
+
+    a1 = new Tanque();
+    
+    System.out.println(a1.getContenido());
+
+    a1.setSacarAgua(2500);
+
+    System.out.println(a1.getContenido());
+
+    a1.setSacarMitad();
+
+    System.out.println(a1.getContenido());
+    
+    a1.setAgregar(100);
+
+    System.out.println(a1.getContenido());
+
+
+    
+
+}
 }
