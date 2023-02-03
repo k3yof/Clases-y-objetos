@@ -1,96 +1,118 @@
 import java.util.Arrays;
-import java.util.Scanner;
 
-class Carrera
+import javax.management.AttributeValueExp;
+
+class Atletas
 {
-    private Atleta atleta;
-    private int distancia;
-    private Atleta [] participantes;
+    String nombre;
+    int numero;
+    String nacionalidad;
+    Double tiempo;
 
-    Carrera()
+    Atletas()
     {
-
+        nombre="";
+        numero=0;
+        nacionalidad="";
+        tiempo=0.0;
     }
-    Carrera(Atleta [] participantes,Atleta ganador)
+
+    Atletas(String nombre, int numero, String nacionalidad,Double tiempo)
     {
-        participantes = new Atleta [] (participantes);
+        this.nombre=nombre;
+        this.numero=numero;
+        this.nacionalidad=nacionalidad;
+        this.tiempo=tiempo;
     }
 
-    public String getGanadorNombre(Atleta ganador)
-    {
-        String nombreGanador;
-        nombreGanador=ganador.getNom();
+    //GETTERS Y SETTERS
 
-        return nombreGanador;
-    }
-    public String informacionAtleta(Atleta a)
-    {
-        String inf;
-
-        inf = a.getNom()+"  "+a.getNum()+"  "+a.getNac()+"   "+a.getTie();
-
-        return inf;
-
-    }
-    
-}
-
-class Atleta
-{
-    private String nombre;
-    private int numero;
-    private String nacionalidad;
-    private double tiempo;
-
-    Atleta(String nom,int num,String nac,double tie)
-    {
-        this.nombre = nom;
-        this.numero = num;
-        this.nacionalidad = nac;
-        this.tiempo = tie;
-    }
-    
-    public String getNom()
+    public String getNombre() 
     {
         return nombre;
     }
-    public int getNum()
-    {
-        return numero;
-    }
-    public String getNac()
+    
+    public String getNacionalidad() 
     {
         return nacionalidad;
     }
-    public double getTie()
+
+    public int getNumero() 
+    {
+        return numero;
+    }
+
+    public Double getTiempo() 
     {
         return tiempo;
     }
+    
+
 }
-class Bici
+
+class Carrera
 {
-    public static void main(String [] args)
+    Atletas totales[]= new Atletas[0];
+
+    Atletas[] insertar(Atletas elem)
     {
-    Scanner sc = new Scanner(System.in);
+        totales = Arrays.copyOf(totales, totales.length+1);
+        totales[totales.length-1] = elem;
 
-    Atleta a;
-    Atleta b;
-
-    a = new Atleta("Paquillo", 0, "Español", 10);
-    b = new Atleta("Pepito", 1, "Español", 100);
-
-    if (a.getTie()<b.getTie())
-    {
-        System.out.println(a.getNom()+" con un tiempo de "+a.getTie());
+        return totales;
     }
-    else
+
+    String ganador()
     {
-        System.out.println(b.getNom()+" con un tiempo de "+b.getTie());
+        Atletas winner;
+        if(totales[0].getTiempo()<totales[1].getTiempo())
+        {
+            winner=totales[0];
+        }
+        else
+        {
+            winner=totales[1];
+        }
+
+        for(int i=0;i<totales.length;i++)
+        {
+            if(totales[i].getTiempo()<winner.getTiempo())
+            {
+                winner=totales[i];
+            }
+
+        }
+        return winner.getNombre();
+    }
+
+
+
+
+    
+
+}
+
+public class deporte 
+{
+    public static void main(String[]args) 
+    {
+
+        Atletas pepe = new Atletas("Pepe",14, "Español", 24.43);
+        Atletas rodrigo= new Atletas("Rodrigo",24,"Brasileño",24.01);
+        Atletas alfonso= new Atletas("Alfonso",24,"Brasileño",25.01);
+        Atletas jose= new Atletas("Jose",24,"Brasileño",22.01);
+        Carrera sanSilvestre = new Carrera();
+        sanSilvestre.insertar(rodrigo);
+        sanSilvestre.insertar(pepe);
+        sanSilvestre.insertar(alfonso);
+        sanSilvestre.insertar(jose);
+
+        
+
+        sanSilvestre.ganador();
+        System.out.println(sanSilvestre.ganador());
+    
+        
     }
     
-    Carrera c;
-    c = new Carrera();
-    System.out.println(c.informacionAtleta(a));
-
-    }
 }
