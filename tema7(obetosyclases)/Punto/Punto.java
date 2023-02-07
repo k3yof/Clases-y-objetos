@@ -35,6 +35,48 @@ class Punto3d extends Punto2d
        posiciones[2] = z;
        return posiciones;
     }
+    public boolean comparar(Punto2d otro)
+    {
+        boolean iguales=false;
+        if ( this.x == otro.getPosicionX() && this.y == otro.getPosicionY())
+        {
+            iguales=true;
+        }
+
+        return iguales;
+    }
+
+    //Metodo importante
+    public boolean equals(Object otro)
+    {
+        return (this.comparar((Punto2d)otro));
+
+
+
+        //Puedes usar el metodo anterior o el siguiente
+        /* 
+        Punto2d alguien = (Punto2d) otro;
+        boolean iguales=false;
+        if ( this.x==alguien.x  && this.y == alguien.y)
+        {
+            iguales=true;
+        }
+
+        return iguales; 
+        */
+    }
+    
+    public boolean equals(int x1,int y1)
+    {
+        //Reutilizable
+        boolean iguales=false;
+        if ( this.x == x1 && this.y == y1)
+        {
+            iguales=true;
+        }
+
+        return iguales;
+    }
 }
 class Punto2d
 {
@@ -143,25 +185,125 @@ class Punto2d
         return iguales; 
         */
     }
-
-
-
-
-
-
-
-    double [] setPosicion(int fila,int cols)
+    
+    public boolean equals(int x1,int y1)
     {
-       double posiciones [];
-       posiciones = new double [2];
+        //Reutilizable
+        boolean iguales=false;
+        if ( this.x == x1 && this.y == y1)
+        {
+            iguales=true;
+        }
 
-       posiciones[0]=this.x;
-       posiciones[1]=this.y;
-
-       return posiciones;
-
-
+        return iguales;
     }
+
+    public void shiftX(double tx)
+    {
+        //Desplazar la X
+        this.x = this.x + tx;
+    }
+    public void shiftY(double ty)
+    {
+        //Desplazar la Y
+        this.y = this.y + ty;
+    }
+
+    Punto2d translate(Punto2d posiciones,double tx,double ty)
+    {
+        //A la posicion del punto se le suma la cantidad a desplazar
+        posiciones.x= posiciones.x + tx;
+        posiciones.y= posiciones.y + ty;
+ 
+        return posiciones;
+    }
+    public double distanceToPoint(Punto2d otro)
+    {
+        double exp1=Math.pow((otro.x-this.x), 2);
+        double exp2=Math.pow((otro.y-this.y), 2);
+        double resultado = Math.sqrt(exp1+exp2);
+        return resultado;
+    }
+    public double distanceOrigen(Punto2d otro)
+    {
+        Punto2d origen = new Punto2d(0,0);
+        return(this.distanceToPoint(origen));
+    }
+
+
+
+    public double scalarProduct(Punto2d otro)
+    {
+        //Hacemos una formula para el punto3d es esto+z
+        return((this.x*otro.x)+(this.y*otro.y));
+    }
+
+    public String whichSpace()
+    {
+        String spaceX;
+        String spaceY;
+        String space;
+
+        //Lado de la x
+        if(this.x>0)
+        {
+            spaceX="Derecho,";
+        }
+        else
+        {
+            spaceX="Izquierdo,";
+        }
+        //Lado de la y
+        if(this.x>0)
+        {
+            spaceY="Arriba";
+        }
+        else
+        {
+            spaceY="Abajo";
+        }
+
+        //Si es el origen
+        if (this.x==0)
+        {
+            if(this.y ==0)
+            {
+                space = "Origen";
+            }
+            
+        }
+        space = spaceX+spaceY;
+        //Para la z,hago space=space + enfrente
+        return space;
+    }
+
+    public boolean inBox(double xBox,double yBox,double ancho,double alto)
+    {
+        boolean dentro= false;
+
+        if(this.x>xBox && this.x<(xBox+ancho))
+        {
+            if(this.y >yBox && this.y<(yBox+alto))
+            {
+                dentro=true;
+            }
+        }
+
+        return dentro;
+    }
+
+    public boolean inSphere(Punto2d centro,double radio)
+    {
+        boolean dentro=false;
+
+        if(distanceToPoint(centro)<radio)
+        {
+            dentro=true;
+        }
+        
+        return dentro;
+    }
+    
 
 }
 class Linea
