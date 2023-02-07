@@ -66,16 +66,107 @@ class Punto3d extends Punto2d
         */
     }
     
-    public boolean equals(int x1,int y1)
+    public boolean equals(int x1,int y1,int z1)
     {
         //Reutilizable
         boolean iguales=false;
-        if ( this.x == x1 && this.y == y1)
+        if ( this.x == x1 && this.y == y1 && this.z ==z1)
         {
             iguales=true;
         }
 
         return iguales;
+    }
+    public void shiftX(double tx)
+    {
+        super.shiftX(tx);
+    }
+    public void shiftY(double ty)
+    {
+        super.shiftY(ty);
+    }
+    public void shiftz(double tz)
+    {
+        //Desplazar la z
+        this.z = this.z + tz;
+    }
+
+    Punto2d translate(Punto3d posiciones,double tx,double ty,double tz)
+    {
+        super.translate(posiciones, tx, ty);
+        posiciones.z= posiciones.z + tz;
+ 
+        return posiciones;
+    }
+
+    public double distanceToPoint(Punto3d otro)
+    {
+        double exp1=Math.pow((otro.x-this.x), 2);
+        double exp2=Math.pow((otro.y-this.y), 2);
+        double exp3=Math.pow((otro.z-this.z), 2);
+        double resultado = Math.sqrt(exp1+exp2+exp3);
+        return resultado;
+    }
+    public double distanceOrigen(Punto3d otro)
+    {
+        Punto3d origen = new Punto3d(0,0,0);
+        return(this.distanceToPoint(origen));
+    }
+    public double scalarProduct(Punto3d otro)
+    {
+        //Hacemos una formula para el punto3d es esto+z
+        return(super.scalarProduct(otro)+(this.z*otro.z));
+    }
+    public String whichSpace()
+    {
+        String spaceZ="";
+        String space;
+
+        if (this.z<0)
+        {
+            spaceZ=" ,Atras";
+        }
+        else if( this.z>0)
+        {
+            spaceZ=" ,Delante";
+        }
+        else if (this.z==0)
+        {
+            spaceZ=" ,Origen";
+        }
+        space = super.whichSpace() + spaceZ;
+
+        return space;
+    }
+    public boolean inBox(double xBox,double yBox,double zBox,double depth,double ancho,double alto)
+    {
+        boolean dentro= false;
+
+        if(this.x>xBox && this.x<(xBox+ancho))
+        {
+            if(this.y >yBox && this.y<(yBox+alto))
+            {
+                if(this.z > zBox && this.z<(zBox+depth))
+                {
+                    dentro=true;
+                }
+                
+            }
+        }
+
+        return dentro;
+    }
+
+    public boolean inSphere(Punto3d centro,double radio)
+    {
+        boolean dentro=false;
+
+        if(distanceToPoint(centro)<radio)
+        {
+            dentro=true;
+        }
+        
+        return dentro;
     }
 }
 class Punto2d
