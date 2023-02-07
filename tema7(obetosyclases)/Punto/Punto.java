@@ -254,7 +254,7 @@ class Linea
 
 }
 
-public class camion
+public class Punto
 {
 
     public static void main(String[] args) 
