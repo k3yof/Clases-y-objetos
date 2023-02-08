@@ -141,12 +141,12 @@ class Punto3d extends Punto2d
     public boolean inBox(double xBox,double yBox,double zBox,double depth,double ancho,double alto)
     {
         boolean dentro= false;
-
+        //Buscamos punto que esten dentro de la caja
         if(this.x>xBox && this.x<(xBox+ancho))
         {
-            if(this.y >yBox && this.y<(yBox+alto))
+            if(this.y < yBox && this.y>(yBox-alto))
             {
-                if(this.z > zBox && this.z<(zBox+depth))
+                if(this.z < zBox && this.z>(zBox-depth))
                 {
                     dentro=true;
                 }
