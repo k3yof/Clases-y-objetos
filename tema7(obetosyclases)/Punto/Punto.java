@@ -107,7 +107,7 @@ class Punto3d extends Punto2d
         double resultado = Math.sqrt(exp1+exp2+exp3);
         return resultado;
     }
-    public double distanceOrigen(Punto3d otro)
+    public double distanceOrigen()
     {
         Punto3d origen = new Punto3d(0,0,0);
         return(this.distanceToPoint(origen));
@@ -315,7 +315,7 @@ class Punto2d
         double resultado = Math.sqrt(exp1+exp2);
         return resultado;
     }
-    public double distanceOrigen(Punto2d otro)
+    public double distanceOrigen()
     {
         Punto2d origen = new Punto2d(0,0);
         return(this.distanceToPoint(origen));
