@@ -12,10 +12,10 @@ class B extends A
 }
 class C extends B
 {
-    void metodo2()
+   /*  void metodo2()
     {
         System.out.print("b");
-    }
+    } */
 }
 public class m
 {
