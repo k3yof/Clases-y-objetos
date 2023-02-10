@@ -65,9 +65,9 @@ class Pichu extends Pokemom
         public int bolaRayo1()
         {
             int dañoJugada=0;
-            //int d = (int)(Math.random()*(20-10+1)+10);
-            dañoJugada = 100;
-            this.dañoProducido = dañoProducido+dañoJugada;
+            int d = (int)(Math.random()*(20-10+1)+10);
+            dañoJugada = d;
+            this.dañoProducido = dañoProducido+d;
 
             return dañoJugada;
         }
@@ -161,9 +161,9 @@ class Pikachu extends Pichu
         public int bolaVoltio1()
         {
             int dañoJugada=0;
-            //int d = (int)(Math.random()*(50-10+1)+10);
-            dañoJugada = 100;
-            dañoProducido = dañoProducido+dañoJugada;
+            int d = (int)(Math.random()*(50-10+1)+10);
+            dañoJugada = d;
+            dañoProducido = dañoProducido+d;
 
             return dañoJugada;
         }
@@ -246,9 +246,9 @@ class Raichu extends Pikachu
         public int estallidoTrueno1()
         {
             int dañoJugada=0;
-            //int d = (int)(Math.random()*(90-10+1)+10);
-            dañoJugada = 100;
-            dañoProducido = dañoProducido+dañoJugada;
+            int d = (int)(Math.random()*(90-10+1)+10);
+            dañoJugada = d;
+            dañoProducido = dañoProducido+d;
 
             return dañoJugada;
         }
