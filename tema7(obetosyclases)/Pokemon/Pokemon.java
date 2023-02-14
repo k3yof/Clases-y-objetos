@@ -1,117 +1,67 @@
-import java.util.*;
+import java.util.Scanner;
 
 abstract class Pokemom
 {
     protected String nombre;
     protected String entrenador;
-    protected int experiencia;
+    protected int experiencia =0;
     protected int salud;
-    protected int dañoProducido=0;
+    
 
     abstract void mostrar();
 }
 class Pichu extends Pokemom
 {
-        Pichu( String nombre, String entrenador,int experiencia,int salud)
+        Pichu( String nombre, String entrenador)
         {
             this.nombre = nombre;
             this.entrenador= entrenador;
-            this.experiencia = experiencia;
-            this.salud = salud;
+            this.salud = 50;
         }
         public void mostrar()
         {
             System.out.println("----------------------");
             System.out.println(" Nombre: "+nombre+"   ");
             System.out.println(" Entrenador: "+this.entrenador+"   ");
-            System.out.println(" Experiencia: "+this.experiencia+"    ");
+            System.out.println(" Experiencia: "+experiencia+"    ");
             System.out.println(" Salud: "+this.salud+"          ");
             System.out.println("----------------------");
         }
-        public int ataqueRapido1()
+        public int ataqueRapido()
         {
             int dañoJugada=0;
             int d = (int) (Math.random()*10)+1;
-            if (d ==1 || d ==2 || d ==3 || d ==4 || d ==5)
+            if (d<=5)
             {
                 dañoJugada = 10;
-                dañoProducido = dañoProducido+10;
+               
             }
             else
             {
                 dañoJugada=20;
-                dañoProducido = dañoProducido+20;
+                
             }
             return dañoJugada;
         }
 
-        public void ataqueRapido()
-        {
-            
-            if (dañoProducido >=100)
-            {
-                this.subirExp();
-            }
-            else
-            {
-                System.out.println("Ataque rapido ha hecho : "+ataqueRapido1());
-                System.out.println("Daño : "+this.dañoProducido);
-                if (this.experiencia >= 50)
-                {
-                    System.out.println("Ha Mejorado!!!!");
-                } 
-            }
-        }
-        public int bolaRayo1()
+        
+        public int bolaRayo()
         {
             int dañoJugada=0;
             int d = (int)(Math.random()*(20-10+1)+10);
             dañoJugada = d;
-            this.dañoProducido = dañoProducido+d;
-
             return dañoJugada;
         }
 
-        public void bolaRayo()
+        public int getExp()
         {
-            
-            if (dañoProducido >=100)
-            {
-                this.subirExp();
-            }
-            else
-            {
-                System.out.println("Bola rayo ha hecho : "+ bolaRayo1());
-                System.out.println("Daño : "+this.dañoProducido);
-                if (this.experiencia >= 50)
-                {
-                    System.out.println("Ha Mejorado!!!!");
-                } 
-            }
+            return experiencia;
         }
-
-        public void subirExp()
+        public void subirExp(int valor)
         {
-            if (this.experiencia >= 50)
-            {
-               
-            } 
-
-            else
-            {
-                this.experiencia = this.experiencia+15;
-                System.out.println(this.experiencia);
-                this.dañoProducido =0;
-            }
-        }
-        protected Pikachu mejora()
-        {
-            this.dañoProducido = 0;
-            Pikachu pokemo2 = new Pikachu("Pikachu", this.entrenador,this.experiencia, this.salud+25);
-           // System.out.println("ha mejorado!!!!");
-            return pokemo2;
-
-
+         
+                this.experiencia = this.experiencia+valor;
+                System.out.println("Exp: "+this.experiencia);
         }
         
         
@@ -119,157 +69,75 @@ class Pichu extends Pokemom
 
 class Pikachu extends Pichu
 {
-        Pikachu( String nombre, String entrenador,int experiencia,int salud)
+        Pikachu( String nombre, String entrenador,int experiencia)
         {
-           super(nombre, entrenador, experiencia, salud);
+           super(nombre, entrenador);
+           this.experiencia= super.experiencia;
            
         }
-        public int ataqueRapido1()
+        public int ataqueRapido()
         {
             int dañoJugada=0;
             int d = (int) (Math.random()*10)+1;
-            if (d ==1 || d ==2 || d ==3 || d ==4 || d ==5)
+            if (d<=5)
             {
                 dañoJugada = 15;
-                dañoProducido = dañoProducido+15;
             }
             else
             {
-                dañoJugada=25;
-                dañoProducido = dañoProducido+25;
+                dañoJugada=25;      
             }
             return dañoJugada;
         }
 
-        public void ataqueRapido()
-        {
-           
-            if (dañoProducido >=100)
-            {
-                this.subirExp();
-            }
-            else
-            {
-                System.out.println("Ataque rapido ha hecho : "+ataqueRapido1());
-                System.out.println("Daño : "+this.dañoProducido);
-                if (this.experiencia >= 100)
-                {
-                    System.out.println("Ha Mejorado!!!!");
-                } 
-            }
-        }
-        public int bolaVoltio1()
+       
+        public int bolaVoltio()
         {
             int dañoJugada=0;
             int d = (int)(Math.random()*(50-10+1)+10);
             dañoJugada = d;
-            dañoProducido = dañoProducido+d;
-
-            return dañoJugada;
+           return dañoJugada;
         }
 
-        public void bolaVoltio()
-        {
-            
-            if (dañoProducido >=100)
-            {
-                this.subirExp();
-            }
-            else
-            {
-                System.out.println("Bola voltio ha hecho : "+bolaVoltio1());
-                System.out.println("Daño : "+this.dañoProducido);
-                if (experiencia >= 100)
-                {
-                    System.out.println("Ha Mejorado!!!!");
-                } 
-            }
-        }
-        public void subirExp()
-        {
-          
-            if (this.experiencia >= 100)
-            {
-                
-            } 
-
-            else
-            {
-                this.experiencia = this.experiencia+15;
-                System.out.println(this.experiencia);
-                this.dañoProducido =0;
-            }
-        }
-        protected Raichu mejora()
-        {
-            this.dañoProducido = 0;
-            Raichu pokemo3 = new Raichu("Raichu", this.entrenador,this.experiencia, this.salud+25);
-            //System.out.println("ha mejorado!!!!");
-            return pokemo3;
-
-
-        }
+        
+       
+       
 }
    
 class Raichu extends Pikachu
 {
-        Raichu( String nombre, String entrenador,int experiencia,int salud)
+        Raichu( String nombre, String entrenador,int experiencia)
         {
-            super(nombre, entrenador, experiencia, salud);
+            super(nombre, entrenador, experiencia);
+            this.experiencia= super.experiencia;
         }
-        public int ataqueRapido1()
+        public int ataqueRapido()
         {
             int dañoJugada=0;
             int d = (int) (Math.random()*10)+1;
-            if (d ==1 || d ==2 || d ==3 || d ==4 || d ==5)
+            if (d<=5)
             {
                 dañoJugada = 30;
-                dañoProducido = dañoProducido+30;
+                
             }
             else
             {
                 dañoJugada=40;
-                dañoProducido = dañoProducido+40;
             }
             return dañoJugada;
         }
 
-        public void ataqueRapido()
-        {
-            System.out.println("Ataque rapido ha hecho : "+ataqueRapido1());
-            System.out.println("Daño : "+this.dañoProducido);
-            if (dañoProducido >=100)
-            {
-                this.subirExp();
-            }
-        }
-        public int estallidoTrueno1()
+     
+        public int estallidoTrueno()
         {
             int dañoJugada=0;
             int d = (int)(Math.random()*(90-10+1)+10);
             dañoJugada = d;
-            dañoProducido = dañoProducido+d;
+         
 
             return dañoJugada;
         }
 
-        public void estallidoTrueno()
-        {
-            System.out.println("Bola voltio ha hecho : "+estallidoTrueno1());
-            System.out.println("Daño : "+this.dañoProducido);
-            if (dañoProducido >=100)
-            {
-                this.subirExp();
-            }
-        }
-        public void subirExp()
-        {
-            this.experiencia = this.experiencia+15;
-            System.out.println(this.experiencia);
-            this.dañoProducido =0;
-            
-        }
-      
         
 }
 
@@ -280,60 +148,242 @@ public class Pokemon
 
     public static void main(String[] args) 
     {
-       Pichu a = new Pichu("Pichu", "manu", 0, 50);
+        Scanner sc = new Scanner(System.in);
+        int resp;
+        int ataque;
+       
+       int dañoProducido=0;
+       Pichu a = new Pichu("Pichu", "manu");
+
+       
 
        a.mostrar();
     
 
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
-       a.bolaRayo();
+       boolean salir= false;
+     
+       do
+       {
+        System.out.println("Que ataque quieres usar:");
+        System.out.println("1) Ataque rapido 2)bolaRayo 3)Salir");
+        resp = sc.nextInt();
+        switch (resp)
+        {    
+            case 1 ->
+            {
+                if (dañoProducido >=100)
+                {
+                    a.subirExp(15);
+                    dañoProducido=0;
+                    //salir=true;
+                    if (a.getExp() >= 50)
+                    {
+                        System.out.println("Ha Mejorado!!!!");
+                        salir = true;
+                    } 
+                }
+                else
+                {
+                    ataque = a.ataqueRapido();
+                    System.out.println("Ataque rapido ha hecho : "+ataque);
+                    dañoProducido = dañoProducido + ataque;
+                    System.out.println("Daño : "+dañoProducido);
+                    
+                }
+            }
+            case 2->
+            {
+                
+                    if (dañoProducido >=100)
+                    {
+                        a.subirExp(15);
+                        dañoProducido =0;
+                        if (a.getExp() >= 50)
+                        {
+                            System.out.println("Ha Mejorado!!!!");
+                            salir = true;
+                        }  
+                    }
+                    else
+                    {
+                    
+                            ataque = a.bolaRayo();
+                    
+                        
+                        System.out.println("Bola rayo ha hecho : "+ ataque);
+                        dañoProducido = dañoProducido + ataque;
+                        System.out.println("Daño : "+dañoProducido);
+                        
+                        
+                    
+                    
+                    }
 
+                
+                }
+                case 3->
+                {
+                    break;
+                }
+                
+            
+            default -> 
+            {
+                System.out.println("Opcion incorrecta");
+            }
+
+        }
+       // System.out.println(a.getExp());
+        
+       }while (salir==false );
+
+
+       salir = false;
+       Pikachu z = new Pikachu("Pikachu", "Manu",1);
+       a=z;
+       a.mostrar();
+       do
+       {
+        System.out.println("Que ataque quieres usar:");
+        System.out.println("1) Ataque rapido 2)bolaVoltio 3)Salir");
+        resp = sc.nextInt();
+        switch (resp)
+        {    
+            case 1 ->
+            {
+                if (dañoProducido >=100)
+                {
+                    a.subirExp(15);
+                    dañoProducido =0;  
+                    if (a.getExp() >= 100)
+                    {
+                        System.out.println("Ha Mejorado!!!!");
+                        salir = true;
+                    } 
+                }
+                else
+                {
+                    ataque = a.ataqueRapido();
+                    System.out.println("Ataque rapido ha hecho : "+ataque);
+                    dañoProducido = dañoProducido + ataque;
+                    System.out.println("Daño : "+dañoProducido);
+                  
+                }
+            }
+            case 2->
+            {
+                
+                    if (dañoProducido >=100)
+                    {
+                        a.subirExp(15);
+                        dañoProducido =0;
+                        if (a.getExp() >= 100)
+                        {
+                            System.out.println("Ha Mejorado!!!!");
+                            salir = true;
+                        }  
+                    }
+                    else
+                    {
+                    
+                           // ataque = a.bolaVoltio();
+                    
+                    /*     
+                        System.out.println("Bola voltio ha hecho : "+ ataque);
+                        dañoProducido = dañoProducido + ataque;
+                        System.out.println("Daño : "+dañoProducido); */
+                        
+                        
+                    
+                    
+                    }
+
+                
+                }
+                
+                case 3->
+                {
+                    break;
+                }
+                
+            
+            default -> 
+            {
+                System.out.println("Opcion incorrecta");
+            }
+
+        }
+       }while (salir==false);
+
+       salir = false;
+        Raichu ak = new Raichu("Raichu", "Salva",5);
+
+        a = ak;
+        a.mostrar();
+       do
+       {
+        System.out.println("Que ataque quieres usar:");
+        System.out.println("1) Ataque rapido 2)EstallidoTrueno 3)Salir");
+        resp = sc.nextInt();
+        switch (resp)
+        {    
+            case 1 ->
+            {
+                if (dañoProducido >=100)
+                {
+                    a.subirExp(15);
+                    dañoProducido =0;
+                    
+                }
+                else
+                {
+                    ataque = a.ataqueRapido();
+                    System.out.println("Ataque rapido ha hecho : "+ataque);
+                    dañoProducido = dañoProducido + ataque;
+                    System.out.println("Daño : "+dañoProducido);
+                    
+                }
+            }
+            case 2->
+            {
+                
+                    if (dañoProducido >=100)
+                    {
+                        a.subirExp(15);
+                        dañoProducido =0;
+                    
+                    }
+                    else
+                    {
+                    
+                           // ataque = a.estallidoTrueno();
+                    
+                        
+                        /* System.out.println("Bola rayo ha hecho : "+ ataque);
+                        dañoProducido = dañoProducido + ataque;
+                        System.out.println("Daño : "+dañoProducido);
+                         */
+                        
+                    
+                    }
+
+                
+                }
+                
+                
+            
+            default -> 
+            {
+                System.out.println("Opcion incorrecta");
+            }
+
+        }
+       }while (resp!=3);
+       
+        
      
    
-
-       Pikachu z = a.mejora();
-       z.mostrar();
-      
-       z.bolaVoltio();
-       z.bolaVoltio();
-       z.bolaVoltio();
-       z.bolaVoltio();
-       z.bolaVoltio();
-       z.bolaVoltio();
-       z.bolaVoltio();
-       z.bolaVoltio();
-       z.bolaVoltio();
-       z.bolaVoltio();
-      
-
-
-       Raichu ak = z.mejora();
-
-       ak.mostrar();
-        
-       ak.estallidoTrueno();
-       ak.estallidoTrueno();
-       ak.estallidoTrueno();
-       ak.estallidoTrueno();
-       ak.estallidoTrueno();
-       ak.estallidoTrueno();
-
-    
+  
        
     }
      
