@@ -108,7 +108,10 @@ public class Main
     
 
        ComparaId k = new ComparaId();
+       ComparaNombres f= new ComparaNombres();
        Arrays.sort(h,k);
+       System.out.println(Arrays.deepToString(h));
+       Arrays.sort(h,f);
        System.out.println(Arrays.deepToString(h));
 
 
