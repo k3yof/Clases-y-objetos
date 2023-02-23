@@ -4,7 +4,7 @@ abstract class Pokemom
 {
     protected String nombre;
     protected String entrenador;
-    protected int experiencia =0;
+    protected int experiencia;
     protected int salud;
     
 
@@ -16,6 +16,7 @@ class Pichu extends Pokemom
         {
             this.nombre = nombre;
             this.entrenador= entrenador;
+            this.experiencia = 0;
             this.salud = 50;
         }
         public void mostrar()
@@ -60,8 +61,8 @@ class Pichu extends Pokemom
         public void subirExp(int valor)
         {
          
-                this.experiencia = this.experiencia+valor;
-                System.out.println("Exp: "+this.experiencia);
+                experiencia = experiencia+valor;
+                System.out.println("Exp: "+experiencia);
         }
         
         
@@ -69,10 +70,11 @@ class Pichu extends Pokemom
 
 class Pikachu extends Pichu
 {
-        Pikachu( String nombre, String entrenador,int experiencia)
+        //int experiencia;
+        Pikachu( String nombre, String entrenador)
         {
            super(nombre, entrenador);
-           this.experiencia= super.experiencia;
+           //experiencia= super.experiencia;
            
         }
         public int ataqueRapido()
@@ -106,10 +108,11 @@ class Pikachu extends Pichu
    
 class Raichu extends Pikachu
 {
-        Raichu( String nombre, String entrenador,int experiencia)
+        //int experiencia;
+        Raichu( String nombre, String entrenador)
         {
-            super(nombre, entrenador, experiencia);
-            this.experiencia= super.experiencia;
+            super(nombre, entrenador );
+            //experiencia= super.experiencia;
         }
         public int ataqueRapido()
         {
@@ -239,7 +242,7 @@ public class Pokemon
 
 
        salir = false;
-       Pikachu z = new Pikachu("Pikachu", "Manu",1);
+       Pikachu z = new Pikachu("Pikachu", "Manu");
        a=z;
        a.mostrar();
        do
@@ -316,7 +319,7 @@ public class Pokemon
        }while (salir==false);
 
        salir = false;
-        Raichu ak = new Raichu("Raichu", "Salva",5);
+        Raichu ak = new Raichu("Raichu", "Salva");
 
         a = ak;
         a.mostrar();
