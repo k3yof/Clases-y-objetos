@@ -61,7 +61,7 @@ class Main
    
     List<Cliente> listaClientes = new ArrayList<>();
     Collection <Cliente> coleccionClie = listaClientes;
-    Cliente a = new Cliente("2223","Manu","27/10/2004");
+    Cliente a = new Cliente("1223","Manu","27/10/2004");
     Cliente b = new Cliente("2223","Ana","27/10/2004");
     Cliente c = new Cliente("2223","Salva","27/10/2004");
     Cliente d = new Cliente("2223","Victor","27/10/2004");
