@@ -29,35 +29,18 @@ class Main
       
     } 
    
-    
-    int i=0;
-        String nombre;
-        double altura;
-        Map<String, Double> m = new HashMap<>();
-        Scanner sn = new Scanner(System.in);
-        Scanner sa = new Scanner(System.in);
-        System.out.println("-------------------");
-        System.out.println("-------------------");
-        System.out.println("-------------------");
-        System.out.println("1.Introducir datos: ");
-        i=sn.nextInt();
-        switch(i) {
-            case 1:
-            System.out.println("Introduce Nombre: ");
-            nombre = sa.nextLine();
-            System.out.println("Introduce Altura; ");
-            altura = sn.nextDouble();
+       
 
-                m.put(nombre, altura);
-
-                System.out.println(m);
-              break;
-            default:
-              System.out.println("Introduce Datos");
-          }
+        
+        System.out.println("-------------------");
+        System.out.println("Mostrar datos: ");
+        //Forma favorita
+        mapa.forEach((k,v) -> System.out.println("Key = "+ k + ", Value = " + v));  
+        System.out.println("-------------------");  
         
    
 
+        
 
    
 
